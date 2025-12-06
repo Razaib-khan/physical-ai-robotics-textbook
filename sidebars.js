@@ -20,9 +20,9 @@ const sidebars = {
       label: 'Module 1: ROS 2',
       link: {
         type: 'doc',
-        id: 'module-1-ros2/module-1-ros2-index',
+        id: 'module-1-ros2/index',
       },
-      collapsed: false,
+      collapsed: true,
       items: [
         'module-1-ros2/1-1-ros2-intro',
         'module-1-ros2/1-2-nodes-topics',
@@ -40,43 +40,82 @@ const sidebars = {
     },
     {
       type: 'category',
-      label: 'Module 2: Gazebo & Unity',
+      label: 'Module 2: Simulation',
       link: {
         type: 'doc',
-        id: 'module-2-simulation/module-2-simulation-index',
+        id: 'module-2-simulation/index',
       },
       collapsed: true,
-      items: [],
+      items: [
+        'module-2-simulation/2-1-gazebo-intro',
+        'module-2-simulation/2-2-unity-intro',
+        'module-2-simulation/2-3-sensors',
+        'module-2-simulation/2-4-world-building',
+        {
+          type: 'category',
+          label: 'Exercises',
+          items: [
+            'module-2-simulation/exercises/module-2-exercises',
+          ],
+        },
+      ],
     },
     {
       type: 'category',
       label: 'Module 3: NVIDIA Isaac',
       link: {
         type: 'doc',
-        id: 'module-3-isaac/module-3-isaac-index',
+        id: 'module-3-isaac/index',
       },
       collapsed: true,
-      items: [],
+      items: [
+        'module-3-isaac/3-1-isaac-sim-intro',
+        'module-3-isaac/3-2-reinforcement-learning',
+        'module-3-isaac/3-3-training-scenarios',
+        {
+          type: 'category',
+          label: 'Exercises',
+          items: [
+            'module-3-isaac/exercises/module-3-exercises',
+          ],
+        },
+      ],
     },
     {
       type: 'category',
       label: 'Module 4: Vision-Language-Action',
       link: {
         type: 'doc',
-        id: 'module-4-vla/module-4-vla-index',
+        id: 'module-4-vla/index',
       },
       collapsed: true,
-      items: [],
+      items: [
+        'module-4-vla/4-1-vision-pipelines',
+        'module-4-vla/4-2-language-models',
+        'module-4-vla/4-3-action-coordination',
+        {
+          type: 'category',
+          label: 'Exercises',
+          items: [
+            'module-4-vla/exercises/module-4-exercises',
+          ],
+        },
+      ],
     },
     {
       type: 'category',
       label: 'Capstone Project',
       link: {
         type: 'doc',
-        id: 'capstone/capstone-index',
+        id: 'capstone-index',
       },
-      collapsed: true,
-      items: [],
+      collapsed: false,
+      items: [
+        'capstone-requirements',
+        'capstone-milestones',
+        'capstone-evaluation',
+        'capstone-troubleshooting',
+      ],
     },
     {
       type: 'category',

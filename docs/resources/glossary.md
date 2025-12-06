@@ -78,7 +78,20 @@ Sensor that measures distances using laser pulses, creating 3D point clouds.
 
 **Modules**: [Module 2: Simulation](../module-2-simulation/index.md)
 
+## M
+
+### Multi-modal Fusion
+Combining information from multiple sensor modalities (e.g., vision, language, touch) to achieve a more robust understanding of the environment.
+
+**Modules**: [Module 4: Vision-Language-Action](../module-4-vla/index.md)
+
 ## N
+
+### Natural Language Processing (NLP)
+A field of AI focused on enabling computers to understand, interpret, and generate human language.
+
+**Related**: [Vision-Language-Action (VLA)](#vision-language-action-vla)
+**Modules**: [Module 4: Vision-Language-Action](../module-4-vla/index.md)
 
 ### Node
 An independent executable process in ROS 2 that performs a specific task.
@@ -87,6 +100,12 @@ An independent executable process in ROS 2 that performs a specific task.
 **Modules**: [1.2 Nodes and Topics](../module-1-ros2/1-2-nodes-topics.md)
 
 ## O
+
+### Object Detection
+A computer vision technique that identifies and localizes objects within an image or video stream.
+
+**Related**: [Vision-Language-Action (VLA)](#vision-language-action-vla)
+**Modules**: [Module 4: Vision-Language-Action](../module-4-vla/index.md)
 
 ### Omniverse
 NVIDIA's platform for 3D simulation and collaboration, underlying Isaac Sim.
@@ -97,6 +116,12 @@ NVIDIA's platform for 3D simulation and collaboration, underlying Isaac Sim.
 A configuration value in ROS 2 that nodes can read and update dynamically.
 
 **Modules**: [1.4 Parameters](../module-1-ros2/1-4-parameters.md)
+
+### Physics Engine
+Software that simulates physical interactions like collisions, gravity, and forces in a virtual environment.
+
+**Related**: [Gazebo](#gazebo), [Isaac Sim](#isaac-sim), [Unity](#unity)
+**Modules**: [Module 2: Simulation](../module-2-simulation/index.md), [Module 3: Isaac](../module-3-isaac/index.md)
 
 ### Publisher
 A node that sends messages to a topic in ROS 2.
@@ -116,6 +141,12 @@ Machine learning approach where agents learn through trial and error with reward
 Open-source middleware framework for robot software development.
 
 **Modules**: [Module 1](../module-1-ros2/index.md)
+
+### Sensor Plugin
+Software component in a simulator (e.g., Gazebo) that models a physical sensor and publishes its data to a ROS 2 topic.
+
+**Related**: [LiDAR](#lidar)
+**Modules**: [Module 2: Simulation](../module-2-simulation/index.md)
 
 ## S
 

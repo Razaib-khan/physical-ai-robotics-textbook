@@ -111,6 +111,16 @@ Curated resources for deepening your robotics and AI knowledge.
 - **Link**: [arXiv:2108.10470](https://arxiv.org/abs/2108.10470)
 - **Key Insight**: Massive parallelization speeds up RL training 100x
 
+#### Gazebo: A Multi-Robot Simulator for Outdoors and Indoors
+- **Authors**: Koenig et al.
+- **Year**: 2004
+- **Link**: [IEEE Xplore](https://ieeexplore.ieee.org/document/1301938)
+- **Key Insight**: Foundational paper for the Gazebo simulator
+
+#### Unity Robotics Hub Documentation
+- **Link**: [Unity Robotics Hub](https://github.com/Unity-Technologies/Unity-Robotics-Hub)
+- **Key Insight**: Resources and packages for integrating Unity with ROS
+
 ---
 
 ## Online Courses

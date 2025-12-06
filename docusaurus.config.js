@@ -13,7 +13,7 @@ const darkCodeTheme = themes.dracula;
 const config = {
   title: 'Physical AI & Humanoid Robotics',
   tagline: 'Interactive Textbook for Robotics and AI Learning',
-  favicon: 'img/favicon.ico',
+  favicon: 'img/logos/PhysicalAIandHumanoidRoboticsBookLogo.png',
 
   // Set the production url of your site here
   url: 'https://your-domain.github.io',
@@ -45,7 +45,7 @@ const config = {
           sidebarPath: require.resolve('./sidebars.js'),
           // remarkPlugins: [math],
           // rehypePlugins: [katex],
-          editUrl: 'https://github.com/your-org/robotics-textbook/edit/main/',
+          editUrl: undefined,
         },
         blog: false,
         theme: {
@@ -67,6 +67,9 @@ const config = {
         language: ["en"],
         highlightSearchTermsOnTargetPage: true,
         explicitSearchResultPath: true,
+        indexDocs: true,
+        indexBlog: false,
+        docsRouteBasePath: "/",
       }),
     ],
   ],
@@ -89,12 +92,14 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       // Replace with your project's social card
-      image: 'img/social-card.jpg',
+      image: 'img/logos/social card.jpeg',
       navbar: {
         title: 'Physical AI & Humanoid Robotics',
         logo: {
           alt: 'Robotics Textbook Logo',
-          src: 'static\img\logos\Physical AI and Humanoid Robotics Book Logo.jpg',
+          src: 'img/logos/PhysicalAIandHumanoidRoboticsBookLogo.png',
+          height: 60,
+          width: 60,
         },
         items: [
           {
@@ -112,6 +117,12 @@ const config = {
       },
       footer: {
         style: 'dark',
+        logo: {
+          alt: 'Physical AI & Humanoid Robotics',
+          src: 'img/logos/social card.jpeg',
+          href: '/',
+          width: 350,
+        },
         links: [
           {
             title: 'Modules',
