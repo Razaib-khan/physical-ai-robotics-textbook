@@ -16,13 +16,13 @@ const config = {
   favicon: 'img/logos/PhysicalAIandHumanoidRoboticsBookLogo.png',
 
   // Set the production url of your site here
-  url: 'https://your-domain.github.io',
+  url: 'https://razaib-khan.github.io',
   // Set the /<baseUrl>/ pathname under which your site is served
-  baseUrl: '/',
+  baseUrl: '/physical-ai-robotics-textbook/',
 
   // GitHub pages deployment config.
-  organizationName: 'your-org', // Usually your GitHub org/user name.
-  projectName: 'robotics-textbook', // Usually your repo name.
+  organizationName: 'Razaib-khan', // Usually your GitHub org/user name.
+  projectName: 'physical-ai-robotics-textbook', // Usually your repo name.
 
   onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
@@ -98,16 +98,8 @@ const config = {
         logo: {
           alt: 'Robotics Textbook Logo',
           src: 'img/logos/PhysicalAIandHumanoidRoboticsBookLogo.png',
-          height: 60,
-          width: 60,
         },
         items: [
-          {
-            type: 'docSidebar',
-            sidebarId: 'tutorialSidebar',
-            position: 'left',
-            label: 'Textbook',
-          },
           {
             href: 'https://github.com/Razaib-khan',
             label: 'GitHub',
@@ -117,12 +109,6 @@ const config = {
       },
       footer: {
         style: 'dark',
-        logo: {
-          alt: 'Physical AI & Humanoid Robotics',
-          src: 'img/logos/social card.jpeg',
-          href: '/',
-          width: 350,
-        },
         links: [
           {
             title: 'Modules',
@@ -168,6 +154,14 @@ const config = {
               {
                 label: 'GitHub',
                 href: 'https://github.com/Razaib-khan',
+              },
+            ],
+          },
+          {
+            title: ' ',
+            items: [
+              {
+                html: '<img src="/physical-ai-robotics-textbook/img/logos/social card.jpeg" alt="Physical AI & Humanoid Robotics" class="footer-social-card" />',
               },
             ],
           },
