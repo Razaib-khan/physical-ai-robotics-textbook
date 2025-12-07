@@ -16,13 +16,13 @@ const config = {
   favicon: 'img/logos/PhysicalAIandHumanoidRoboticsBookLogo.png',
 
   // Set the production url of your site here
-  url: 'https://your-domain.github.io',
+  url: 'https://razaib-khan.github.io',
   // Set the /<baseUrl>/ pathname under which your site is served
-  baseUrl: '/',
+  baseUrl: '/physical-ai-robotics-textbook/',
 
   // GitHub pages deployment config.
-  organizationName: 'your-org', // Usually your GitHub org/user name.
-  projectName: 'robotics-textbook', // Usually your repo name.
+  organizationName: 'Razaib-khan', // Usually your GitHub org/user name.
+  projectName: 'physical-ai-robotics-textbook', // Usually your repo name.
 
   onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
@@ -161,7 +161,7 @@ const config = {
             title: ' ',
             items: [
               {
-                html: '<img src="/img/logos/social card.jpeg" alt="Physical AI & Humanoid Robotics" class="footer-social-card" />',
+                html: '<img src="/physical-ai-robotics-textbook/img/logos/social card.jpeg" alt="Physical AI & Humanoid Robotics" class="footer-social-card" />',
               },
             ],
           },
