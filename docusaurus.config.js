@@ -98,16 +98,8 @@ const config = {
         logo: {
           alt: 'Robotics Textbook Logo',
           src: 'img/logos/PhysicalAIandHumanoidRoboticsBookLogo.png',
-          height: 60,
-          width: 60,
         },
         items: [
-          {
-            type: 'docSidebar',
-            sidebarId: 'tutorialSidebar',
-            position: 'left',
-            label: 'Textbook',
-          },
           {
             href: 'https://github.com/Razaib-khan',
             label: 'GitHub',
@@ -117,12 +109,6 @@ const config = {
       },
       footer: {
         style: 'dark',
-        logo: {
-          alt: 'Physical AI & Humanoid Robotics',
-          src: 'img/logos/social card.jpeg',
-          href: '/',
-          width: 350,
-        },
         links: [
           {
             title: 'Modules',
@@ -168,6 +154,14 @@ const config = {
               {
                 label: 'GitHub',
                 href: 'https://github.com/Razaib-khan',
+              },
+            ],
+          },
+          {
+            title: ' ',
+            items: [
+              {
+                html: '<img src="/img/logos/social card.jpeg" alt="Physical AI & Humanoid Robotics" class="footer-social-card" />',
               },
             ],
           },
