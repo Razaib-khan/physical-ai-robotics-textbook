@@ -20,7 +20,7 @@ const sidebars = {
       label: 'Module 1: ROS 2',
       link: {
         type: 'doc',
-        id: 'module-1-ros2/index',
+        id: 'module-1-ros2/module-1-ros2-index',
       },
       collapsed: true,
       items: [
@@ -43,7 +43,7 @@ const sidebars = {
       label: 'Module 2: Simulation',
       link: {
         type: 'doc',
-        id: 'module-2-simulation/index',
+        id: 'module-2-simulation/module-2-simulation',
       },
       collapsed: true,
       items: [
@@ -65,7 +65,7 @@ const sidebars = {
       label: 'Module 3: NVIDIA Isaac',
       link: {
         type: 'doc',
-        id: 'module-3-isaac/index',
+        id: 'module-3-isaac/module-3-isaac',
       },
       collapsed: true,
       items: [
@@ -86,7 +86,7 @@ const sidebars = {
       label: 'Module 4: Vision-Language-Action',
       link: {
         type: 'doc',
-        id: 'module-4-vla/index',
+        id: 'module-4-vla/module-4-vla',
       },
       collapsed: true,
       items: [
@@ -107,14 +107,14 @@ const sidebars = {
       label: 'Capstone Project',
       link: {
         type: 'doc',
-        id: 'capstone-index',
+        id: 'capstone/capstone-index',
       },
       collapsed: false,
       items: [
-        'capstone-requirements',
-        'capstone-milestones',
-        'capstone-evaluation',
-        'capstone-troubleshooting',
+        'capstone/capstone-requirements',
+        'capstone/capstone-milestones',
+        'capstone/capstone-evaluation',
+        'capstone/capstone-troubleshooting',
       ],
     },
     {
