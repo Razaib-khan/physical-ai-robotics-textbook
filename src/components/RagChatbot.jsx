@@ -129,18 +129,11 @@ export default function RagChatbot() {
       }
 
       // Check if the response contains an error
-      const hasError = response.error || response.status >= 400;
-
-      // Transform generic errors into user-friendly messages
-      let errorContent = '';
-      if (hasError) {
-        errorContent = '⚠️ LLM API quota has been exceeded.\n\n' +
-                      'Please try again later. Thank you for your patience! 🙏';
-      }
+      const hasError = response.error;
 
       const botMessage = {
         role: 'assistant',
-        content: hasError ? errorContent : (response.answer || response.response || 'Sorry, I could not process your request.'),
+        content: hasError ? response.error : (response.answer || response.response || 'Sorry, I could not process your request.'),
         timestamp: new Date().toISOString(),
         error: hasError,
       };
@@ -149,8 +142,7 @@ export default function RagChatbot() {
     } catch (error) {
       const errorMessage = {
         role: 'assistant',
-        content: '⚠️ LLM API quota has been exceeded.\n\n' +
-                'Please try again later. Thank you for your patience! 🙏',
+        content: error.message || 'Failed to connect to the server. Please check your internet connection and try again.',
         timestamp: new Date().toISOString(),
         error: true,
       };
