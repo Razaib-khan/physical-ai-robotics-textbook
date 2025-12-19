@@ -14,8 +14,12 @@ export default function RagChatbot() {
   const [isLoading, setIsLoading] = useState(false);
   const [conversationId, setConversationId] = useState(null);
   const [backendHealthy, setBackendHealthy] = useState(true);
+  const [validationError, setValidationError] = useState(null);
   const messagesEndRef = useRef(null);
   const inputRef = useRef(null);
+
+  // Input validation constants
+  const MAX_QUERY_LENGTH = 1000;
 
   // Check backend health on mount
   useEffect(() => {
@@ -58,12 +62,34 @@ export default function RagChatbot() {
     setIsOpen(!isOpen);
   };
 
+  // Validate user input
+  const validateQuery = (text) => {
+    // Check for empty or whitespace-only input
+    if (!text || !text.trim()) {
+      return 'Please enter a question';
+    }
+
+    // Check character limit
+    if (text.length > MAX_QUERY_LENGTH) {
+      return `Query is too long (max ${MAX_QUERY_LENGTH} characters)`;
+    }
+
+    return null;
+  };
+
   const handleSendMessage = async (messageText, selectedText = null) => {
     // Get the message content from either parameter or input field
     const messageContent = messageText || inputValue;
 
-    // Check if we have valid content
-    if (!messageContent || (!messageContent.trim() && !selectedText)) return;
+    // Validate the query
+    const validationErrorMessage = validateQuery(messageContent);
+    if (validationErrorMessage) {
+      setValidationError(validationErrorMessage);
+      return;
+    }
+
+    // Clear validation error if input is valid
+    setValidationError(null);
 
     const userMessage = {
       role: 'user',
@@ -199,24 +225,40 @@ export default function RagChatbot() {
           </div>
 
           <div className="chatbot-input-container">
-            <textarea
-              ref={inputRef}
-              value={inputValue}
-              onChange={(e) => setInputValue(e.target.value)}
-              onKeyPress={handleKeyPress}
-              placeholder="Type your message... (Press Enter to send)"
-              className="chatbot-input"
-              rows="2"
-              disabled={isLoading}
-            />
-            <button
-              onClick={() => handleSendMessage()}
-              disabled={isLoading || !inputValue.trim()}
-              className="chatbot-send-button"
-              aria-label="Send message"
-            >
-              ➤
-            </button>
+            {validationError && (
+              <div className="chatbot-validation-error">
+                {validationError}
+              </div>
+            )}
+            <div className="chatbot-input-row">
+              <div className="chatbot-input-wrapper">
+                <textarea
+                  ref={inputRef}
+                  value={inputValue}
+                  onChange={(e) => {
+                    setInputValue(e.target.value);
+                    setValidationError(null);
+                  }}
+                  onKeyPress={handleKeyPress}
+                  placeholder="Type your message... (Press Enter to send)"
+                  className="chatbot-input"
+                  rows="2"
+                  disabled={isLoading}
+                  maxLength={MAX_QUERY_LENGTH}
+                />
+                <div className="chatbot-character-counter">
+                  {inputValue.length} / {MAX_QUERY_LENGTH}
+                </div>
+              </div>
+              <button
+                onClick={() => handleSendMessage()}
+                disabled={isLoading || !inputValue.trim() || inputValue.length > MAX_QUERY_LENGTH}
+                className="chatbot-send-button"
+                aria-label="Send message"
+              >
+                ➤
+              </button>
+            </div>
           </div>
         </div>
       )}

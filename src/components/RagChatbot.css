@@ -274,10 +274,62 @@
 /* Input Container */
 .chatbot-input-container {
   display: flex;
+  flex-direction: column;
   gap: 8px;
   padding: 16px;
   border-top: 1px solid #e0e0e0;
   background: white;
+}
+
+.chatbot-input-row {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+}
+
+.chatbot-input-wrapper {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 4px;
+}
+
+.chatbot-validation-error {
+  padding: 8px 12px;
+  background: #ffe0e0;
+  color: #d32f2f;
+  border: 1px solid #ffcdd2;
+  border-radius: 6px;
+  font-size: 13px;
+  animation: errorSlide 0.3s ease;
+}
+
+[data-theme='dark'] .chatbot-validation-error {
+  background: #3d1f1f;
+  color: #ff6b6b;
+  border: 1px solid #5c2626;
+}
+
+@keyframes errorSlide {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.chatbot-character-counter {
+  font-size: 11px;
+  color: #999;
+  text-align: right;
+  padding: 0 4px;
+}
+
+[data-theme='dark'] .chatbot-character-counter {
+  color: #666;
 }
 
 [data-theme='dark'] .chatbot-input-container {

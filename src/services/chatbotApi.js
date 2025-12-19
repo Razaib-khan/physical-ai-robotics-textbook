@@ -4,6 +4,22 @@
  */
 
 const BACKEND_URL = 'https://ragbackend-production-629d.up.railway.app';
+const TIMEOUT_MS = 60000; // 60 seconds
+
+/**
+ * Create a timeout promise using AbortController
+ * @param {number} ms - Timeout in milliseconds
+ * @returns {Object} Object with promise and abort controller
+ */
+function createTimeout(ms) {
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), ms);
+
+  return {
+    signal: controller.signal,
+    cleanup: () => clearTimeout(timeoutId),
+  };
+}
 
 /**
  * Send a query to the chatbot backend
@@ -12,6 +28,8 @@ const BACKEND_URL = 'https://ragbackend-production-629d.up.railway.app';
  * @returns {Promise<Object>} Response from the chatbot
  */
 export async function sendChatQuery(query, conversationId = null) {
+  const { signal, cleanup } = createTimeout(TIMEOUT_MS);
+
   try {
     const response = await fetch(`${BACKEND_URL}/query`, {
       method: 'POST',
@@ -21,7 +39,11 @@ export async function sendChatQuery(query, conversationId = null) {
       body: JSON.stringify({
         text: query,
       }),
+      signal, // Add AbortController signal
     });
+
+    // Cleanup timeout after receiving response
+    cleanup();
 
     if (!response.ok) {
       const errorData = await response.json();
@@ -30,17 +52,20 @@ export async function sendChatQuery(query, conversationId = null) {
 
     const data = await response.json();
 
-    // Handle the response format: [{"response": "..."}, status_code]
-    if (Array.isArray(data) && data.length > 0) {
-      return {
-        answer: data[0].response || data[0].error || 'No response received',
-        status: data[1],
-        error: data[0].error,
-      };
+    // Backend returns single object format: {"response": "..."}
+    return {
+      answer: data.response || 'No response received',
+      error: null,
+    };
+  } catch (error) {
+    // Cleanup timeout
+    cleanup();
+
+    // Check if error is due to timeout (AbortError)
+    if (error.name === 'AbortError') {
+      throw new Error('Request timed out after 60 seconds. Please try again.');
     }
 
-    return data;
-  } catch (error) {
     console.error('Error sending chat query:', error);
     throw error;
   }
