@@ -15,11 +15,15 @@ export default function RagChatbot() {
   const [conversationId, setConversationId] = useState(null);
   const [backendHealthy, setBackendHealthy] = useState(true);
   const [validationError, setValidationError] = useState(null);
+  const [lastQuery, setLastQuery] = useState('');
+  const [cacheInfo, setCacheInfo] = useState(null);
   const messagesEndRef = useRef(null);
   const inputRef = useRef(null);
+  const debounceTimerRef = useRef(null);
 
   // Input validation constants
   const MAX_QUERY_LENGTH = 1000;
+  const DEBOUNCE_DELAY = 500; // ms - prevent rapid duplicate submissions
 
   // Check backend health on mount
   useEffect(() => {
@@ -65,7 +69,7 @@ export default function RagChatbot() {
   // Validate user input
   const validateQuery = (text) => {
     // Check for empty or whitespace-only input
-    if (!text || !text.trim()) {
+    if (!text || text.trim() === '') {
       return 'Please enter a question';
     }
 
@@ -91,6 +95,15 @@ export default function RagChatbot() {
     // Clear validation error if input is valid
     setValidationError(null);
 
+    // Check for duplicate query (prevent spamming same question)
+    const normalizedQuery = messageContent.toLowerCase().trim();
+    if (normalizedQuery === lastQuery && isLoading) {
+      setValidationError('Please wait for the previous query to complete');
+      return;
+    }
+
+    setLastQuery(normalizedQuery);
+
     const userMessage = {
       role: 'user',
       content: messageContent,
@@ -100,9 +113,15 @@ export default function RagChatbot() {
     setMessages(prev => [...prev, userMessage]);
     setInputValue('');
     setIsLoading(true);
+    setCacheInfo(null);
 
     try {
       const response = await sendChatQuery(userMessage.content, conversationId);
+
+      // Check if response was served from cache
+      if (response.cached) {
+        setCacheInfo('⚡ Served from cache (no API call!)');
+      }
 
       // Update conversation ID if provided
       if (response.conversation_id) {
@@ -228,6 +247,11 @@ export default function RagChatbot() {
             {validationError && (
               <div className="chatbot-validation-error">
                 {validationError}
+              </div>
+            )}
+            {cacheInfo && (
+              <div className="chatbot-cache-info">
+                {cacheInfo}
               </div>
             )}
             <div className="chatbot-input-row">

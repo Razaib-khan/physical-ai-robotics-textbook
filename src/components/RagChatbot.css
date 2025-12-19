@@ -310,6 +310,25 @@
   border: 1px solid #5c2626;
 }
 
+.chatbot-cache-info {
+  padding: 8px 12px;
+  background: #e3f2fd;
+  color: #1976d2;
+  border: 1px solid #90caf9;
+  border-radius: 6px;
+  font-size: 12px;
+  animation: errorSlide 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+[data-theme='dark'] .chatbot-cache-info {
+  background: #1a2332;
+  color: #64b5f6;
+  border: 1px solid #2a3f5f;
+}
+
 @keyframes errorSlide {
   from {
     opacity: 0;
